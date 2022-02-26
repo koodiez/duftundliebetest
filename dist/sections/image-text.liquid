@@ -1,0 +1,83 @@
+<div class="text-image-costum-section">
+<div class="row-image-text-costum">
+    <div class="column-image-text-costum{%- if section.settings.fliprows -%}--right{%- endif -%}">
+      <img src="{{ section.settings.image | img_url: '850x'}}" alt="Mood-Picture" class="row-image">
+    </div>
+    <div class="column-image-text-costum{%- if section.settings.fliprows -%}--right{%- endif -%}">
+    <h2 class="h2-image-text-costum"> {{ section.settings.heading }} </h2>
+      <p class="image-text_abstract-font"> {{ section.settings.text }} </p>
+      {%- for block in section.blocks -%}
+      <div class="inner-flex-icon-text">
+          <div class="inner-image">
+              <img src="{{ block.settings.usp-image | img_url: '64x'}}" alt="USP-Icon">
+          </div>    
+          <div class="inner-text">
+              <h3 class="image-text_h3-font">{{ block.settings.usp-heading }}</h3>
+              <p class="image-text_abstract-font">{{ block.settings.usp-text }}</p> <br>
+          </div>  
+      </div>
+      {%- endfor -%}
+  </div>
+  </div>
+</div>
+
+  {% schema %}
+  {
+    "name": "Image-Text",
+    "settings":[
+    {
+       "type": "text",
+       "id": "heading",
+       "default": "Title",
+       "label": "Section Heading"
+    },
+    {
+       "type": "text",
+       "id": "text",
+       "default": "Kommuniziere deine Vorteile",
+       "label": "Section Abstract"
+    },
+    {
+       "type": "image_picker",
+       "id": "image",
+       "label": "image"
+    },
+    {
+       "type": "checkbox",
+       "id": "fliprows",
+       "label": "Flip Image",
+       "default": false
+    }
+    ],
+    "blocks":[
+    {
+       "type": "image_picker",
+        "name": "USP-Picker",
+        "settings": [
+        {
+           "type": "image_picker",
+           "id": "usp-image",
+           "label": "USP Image"
+        },
+        {
+            "type": "text",
+            "id": "usp-heading",
+            "label": "USP Heading"
+        },
+        {
+            "type": "text",
+            "id": "usp-text",
+            "label": "USP Text"
+        }
+        ]
+    }
+    ],
+    "presets": [
+     {
+       "name": "Image-Text",
+       "category": "Heading"
+       
+     }
+     ]
+  }
+  {% endschema %}
